@@ -58,7 +58,7 @@ tokenizers==0.15.0
 toml==0.10.2
 tomli==2.0.1
 toolz==0.12.0
-torch==2.1.1+cpu
+torch==2.1.1
 torchaudio==2.1.1+cpu
 torchvision==0.16.1+cpu
 tornado==6.4
