@@ -9,3 +9,7 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"msg": "Для получения результата от модели используйте в адресе /predict/"}
 
+def test_read_predict_positive():
+    response = client.post("/predict/", json={"text": "Ваши работники грубые и наглые!"})
+    json_data = response.json() 
+    assert response.status_code == 200
