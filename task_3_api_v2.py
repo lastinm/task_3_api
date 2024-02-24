@@ -4,9 +4,11 @@ from pydantic import BaseModel              # Класс для интерфей
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
+
 # Создадим класс Item ('элемент') содержаний свойство text типа строка на основе класса BaseModel библиотеки pydantic
 class Item(BaseModel):
     text: str
+
 
 # Сохраним объект веб-приложения в переменной app
 app = FastAPI()
@@ -17,11 +19,13 @@ model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint)
 if torch.cuda.is_available():
     model.cuda()
 
+
 # Для корневой страницы сайта выдадим предупреждение.
 @app.get("/")
 def root():
     """Для получения результата от модели используйте в адресе /predict/"""
     return {"msg": "Для получения результата от модели используйте в адресе /predict/"}
+
 
 # Основная функция приложения, вызываемая по адресу: http://....../predict/
 # Получаем из запроса POST объект item созданного нами класса Item
@@ -34,4 +38,3 @@ def predict(item: Item):
     if isinstance(item.text, str):
         proba = proba[0]
     return 1 - proba.T[0] * (1 - proba.T[-1])
-
