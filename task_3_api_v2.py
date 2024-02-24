@@ -1,4 +1,4 @@
-#from sre_parse import Tokenizer
+# from sre_parse import Tokenizer
 from fastapi import FastAPI                 # Библиотека для создания веб-приложения
 from pydantic import BaseModel              # Класс для интерфейса веб-приложения
 import torch
